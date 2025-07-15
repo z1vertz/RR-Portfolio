@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css" />
   <title>Portfolio</title>
 </head>
 <body class="bg-light">
 
   <!-- HEADER -->
-  <header class="header w-100">
+  <header class="header w-100" style="z-index: 1;">
     <div class="collapse" id="header-hidden">
       <div class="container text-muted py-4">
         <div class="row">
@@ -31,13 +32,13 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar" style="background: #3a3d42;">
-      <div class="container d-flex justify-content-between">
-        <a href="#" class="fw-bold navbar-brand fs-3 text-light">RR Portfolio</a>
-        <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#header-hidden">
+    <nav class="navbar d-flex justify-content-between" style="background: #3a3d42;">
+      
+        <a href="#" class="fw-bold navbar-brand fs-3 text-light mx-4">RR Portfolio</a>
+        <button class="navbar-toggler bg-light mx-4" data-bs-toggle="collapse" data-bs-target="#header-hidden">
           <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
+      
     </nav>
 
     <div class="divider bg-secondary" style="height: 3px;"></div>
@@ -67,12 +68,17 @@
     </div>
   </section>
 
+  <!-- UpButton -->
+  <button class=" btn btn-outline-secondary mx-4 fs-4" id="UpButton">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+  
 
     <!-- New project -->
   <section class="services text-center bg-dark text-light" id="new-project">
-  <div class="container d-flex flex-column flex-wrap justify-content-center align-items-center" style="min-height: 50vh; padding: 3rem 1rem;">
-    <h5 class="text-uppercase">Roman Robota</h5>
-    <h1 class="mb-4 mx-auto text-center" style="max-width: 700px;">This is my new project. What new things have I learned from it?</h1>
+  <div class="container d-flex flex-column flex-wrap justify-content-center align-items-center fade-in-bottom" style="min-height: 50vh; padding: 3rem 1rem;">
+    <h1 class="text-uppercase mb-5">Roman Robota</h1>
+    <h2 class="mb-4 mx-auto text-center" style="max-width: 700px;">This is my new project. What new things have I learned from it?</h2>
     <div class="row">
       <div class="col-md-3">
         <h4 class="fw-bold">JavaScript</h4>
@@ -252,6 +258,29 @@
   </footer>
 
   <!-- Scripts -->
+  <script>
+  const upButton = document.getElementById('UpButton');
+  const heroSection = document.querySelector('.hero');
+
+
+  window.addEventListener('scroll', () => {
+  const heroHeight = heroSection.offsetHeight;
+  const scrollY = window.scrollY || window.pageYOffset;
+
+  if (scrollY > heroHeight) {
+    upButton.classList.add('visible');
+  } else {
+    upButton.classList.remove('visible');
+
+  }
+});
+
+  // Скролл наверх при клике
+  upButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+  
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
